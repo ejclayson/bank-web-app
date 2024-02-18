@@ -23,13 +23,15 @@ public class UserController {
         if(!userService.findByUsername(username).isEmpty()){
             throw new UserException("Username already exists.");
         }else{
-            String password = body.get("password");
             String firstname = body.get("firstname");
             String lastname = body.get("lastname");
-            String mobile = body.get("mobile");
             String email = body.get("email");
+            String mobile = body.get("mobile");
+            String password = body.get("password");
 
-            User newUser = new User(username, password, firstname, lastname, mobile, email);
+
+
+            User newUser = new User(username, firstname, lastname,  email, mobile, password);
 
             userService.createUser(newUser);
 
